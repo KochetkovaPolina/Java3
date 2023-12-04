@@ -14,7 +14,7 @@ import javax.swing.table.TableCellRenderer;
 public class HornerTableCellRenderer implements TableCellRenderer {
     private JPanel panel = new JPanel();
     private JLabel label = new JLabel();
-    private boolean needle = false;
+    private String needle = null;
     private DecimalFormat formatter =
             (DecimalFormat) NumberFormat.getInstance();
 
@@ -37,13 +37,23 @@ public class HornerTableCellRenderer implements TableCellRenderer {
 
         label.setText(formattedDouble);
 
+        if (col==1 && this.needle!=null && this.needle.equals(formattedDouble)) {
+// Номер столбца = 1 (т.е. второй столбец) + иголка не null
+// (значит что-то ищем) +
+// значение иголки совпадает со значением ячейки таблицы -
+// окрасить задний фон панели в красный цвет
+            panel.setBackground(Color.RED);
+        } else {
+// Иначе - в обычный белый
+            panel.setBackground(Color.WHITE);
+        }
 
-        panel.setBackground(Color.WHITE);
+
 
         return panel;
     }
 
-    public void setNeedle(boolean needle) {
+    public void setNeedle(String needle) {
         this.needle = needle;
     }
 

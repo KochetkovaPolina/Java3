@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b210cfd-0924-4f99-9ba4-ec2713a50e21" name="Changes" comment="" />
+    <list default="true" id="6b210cfd-0924-4f99-9ba4-ec2713a50e21" name="Changes" comment="started implementing binary saving">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/123.txt" beforeDir="false" afterPath="$PROJECT_DIR$/123.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornerTableCellRenderer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornerTableCellRenderer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornerTableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornerTableModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/task_1/bsu/rfct/course2/group7/Kochetkova/HornersScheme.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bsu/rfct/course2/group7/Kochetkova/HornerTableCellRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bsu/rfct/course2/group7/Kochetkova/HornerTableCellRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bsu/rfct/course2/group7/Kochetkova/HornerTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bsu/rfct/course2/group7/Kochetkova/HornerTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bsu/rfct/course2/group7/Kochetkova/HornersScheme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/bsu/rfct/course2/group7/Kochetkova/HornersScheme.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,26 +52,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Polina/универ/2 курс/java/lab_4&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Polina/универ/2 курс/java/lab_4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.editor",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="bsu.rfct.course2.group7.Kochetkova.Main" />
@@ -88,8 +102,18 @@
       <workItem from="1701115067928" duration="18000" />
       <workItem from="1701157975465" duration="77000" />
       <workItem from="1701158065535" duration="11000" />
-      <workItem from="1701158099934" duration="1003000" />
+      <workItem from="1701158099934" duration="3672000" />
+      <workItem from="1701683699105" duration="530000" />
     </task>
+    <task id="LOCAL-00001" summary="started implementing binary saving">
+      <option name="closed" value="true" />
+      <created>1701159294818</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701159294818</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +141,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="started implementing binary saving" />
+    <option name="LAST_COMMIT_MESSAGE" value="started implementing binary saving" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

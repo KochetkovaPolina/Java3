@@ -4,7 +4,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.sql.SQLOutput;
 import javax.swing.*;
+import java.io.FileOutputStream;
+
 
 public class HornersScheme extends JFrame {
     private static final int WIDTH = 700;
@@ -14,6 +17,8 @@ public class HornersScheme extends JFrame {
     private JFileChooser fileChooser = null;
     private JMenuItem saveToTextMenuItem;
     private JMenuItem saveToBinaryMenuItem;
+    private JMenuItem searchValueMenuItem;
+
     private JTextField textFieldFrom;
     private JTextField textFieldTo;
     private JTextField textFieldStep;
@@ -33,6 +38,9 @@ public class HornersScheme extends JFrame {
         menuBar.add(aboutMenu);
         JMenu fileMenu = new JMenu("Файл");
         menuBar.add(fileMenu);
+        JMenu tableMenu = new JMenu("Таблица");
+        menuBar.add(tableMenu);
+
 
 
         Action aboutAction = new AbstractAction("Автор") {
@@ -70,37 +78,47 @@ public class HornersScheme extends JFrame {
         saveToTextMenuItem.setEnabled(false);
 
         Action saveToGraphicsAction = new AbstractAction("Сохранить данные для построения графика") {
-        public void actionPerformed(ActionEvent event) {
-            if (fileChooser==null) {
+            public void actionPerformed(ActionEvent event) {
+                if (fileChooser == null) {
 // Если экземпляр диалогового окна
 // "Открыть файл" ещѐ не создан,
 // то создать его
-                fileChooser = new JFileChooser();
+                    fileChooser = new JFileChooser();
 // и инициализировать текущей директорией
-                fileChooser.setCurrentDirectory(new File("."));
-            }
+                    fileChooser.setCurrentDirectory(new File("."));
+                }
 // Показать диалоговое окно
-            if (fileChooser.showSaveDialog(HornersScheme.this) ==
-                    JFileChooser.APPROVE_OPTION);
+                if (fileChooser.showSaveDialog(HornersScheme.this) ==
+                        JFileChooser.APPROVE_OPTION) ;
 // Если результат его показа успешный,
 // сохранить данные в двоичный файл
-            saveToBinaryFile(fileChooser.getSelectedFile());
-        }
-    };
-// Добавить соответствующий пункт подменю в меню "Файл"
-        saveToBinaryMenuItem = fileMenu.add(saveToGraphicsAction);
-// По умолчанию пункт меню является недоступным(данных ещѐ нет)
-        saveToBinaryMenuItem.setEnabled(false);
-
-
-
-    JCheckBoxMenuItem colorClosestToIntCB = new JCheckBoxMenuItem("Покрасить");
-        Action colorClosestToPrimesAction = new AbstractAction() {
-            public void actionPerformed(ActionEvent event) {
-                renderer.setNeedle(colorClosestToIntCB.isSelected());
-                getContentPane().repaint();
+                try {
+                    saveToBinaryFile(fileChooser.getSelectedFile());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         };
+
+        saveToBinaryMenuItem = fileMenu.add(saveToGraphicsAction);
+        saveToBinaryMenuItem.setEnabled(false);
+
+        Action searchValueAction = new AbstractAction("Найти значение многочлена") {
+        public void actionPerformed(ActionEvent event) {
+            String value =
+                    JOptionPane.showInputDialog(HornersScheme.this, "Введите значение для поиска",
+                            "Поиск значения", JOptionPane.QUESTION_MESSAGE);
+// Установить введенное значение в качестве иголки
+            renderer.setNeedle(value);
+// Обновить таблицу
+            getContentPane().repaint();
+        }
+    };
+// Добавить действие в меню "Таблица"
+    searchValueMenuItem = tableMenu.add(searchValueAction);
+// По умолчанию пункт меню является недоступным (данных ещѐ нет)
+searchValueMenuItem.setEnabled(false);
+
 
         JLabel labelForFrom = new JLabel("X изменяется на интервале от:");
         textFieldFrom = new JTextField("0.0", 10);
@@ -143,6 +161,8 @@ public class HornersScheme extends JFrame {
                     hBoxResult.add(new JScrollPane(table));
                     getContentPane().validate();
                     saveToTextMenuItem.setEnabled(true);
+                    saveToBinaryMenuItem.setEnabled(true);
+                    searchValueMenuItem.setEnabled(true);
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(HornersScheme.this, "Ошибка в формате записи числа с плавающей точкой", "Ошибочный формат числа", JOptionPane.WARNING_MESSAGE);
                 }
@@ -157,6 +177,8 @@ public class HornersScheme extends JFrame {
                 hBoxResult.removeAll();
                 hBoxResult.add(new JPanel());
                 saveToTextMenuItem.setEnabled(false);
+                saveToBinaryMenuItem.setEnabled(false);
+                searchValueMenuItem.setEnabled(false);
                 getContentPane().validate();
             }
         });
@@ -176,6 +198,7 @@ public class HornersScheme extends JFrame {
 
     protected void saveToTextFile(File selectedFile) {
         try {
+
             PrintStream out = new PrintStream(selectedFile);
             out.println("Результаты табулирования многочлена по схеме Горнера");
             out.print("Многочлен: ");
@@ -194,5 +217,18 @@ public class HornersScheme extends JFrame {
             out.close();
         } catch (FileNotFoundException ignored) {
         }
+    }
+
+    protected void saveToBinaryFile(File selectedFile) throws IOException {
+
+        DataOutputStream out = new DataOutputStream(new
+                FileOutputStream(selectedFile));
+
+        for (int i = 0; i < data.getRowCount(); i++) {
+
+            out.writeDouble((Double) data.getValueAt(i, 0));
+            out.writeDouble((Double) data.getValueAt(i, 1));
+        }
+        out.close();
     }
 }

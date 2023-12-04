@@ -67,12 +67,14 @@ public class HornerTableModel extends AbstractTableModel {
         };
     }
 
-    private double calculateHorner(double x) {
+    public double calculateHorner(double x) {
         Double b = coefficients[coefficients.length - 1];
         for (int i = coefficients.length - 2; i >= 0; i--) {
             b = b * x + coefficients[i];
         }
         return b;
     }
+
+
 }
 
